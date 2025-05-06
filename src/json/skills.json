@@ -1,4 +1,4 @@
-skills = '{
+{
     "programming language": [
         {
             "name": "JavaScript",
@@ -135,4 +135,4 @@ skills = '{
             "tags": ["Spanish", "intermediate", "conversations"]
         }
     ]
-}';
+}
