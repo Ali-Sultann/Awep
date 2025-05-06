@@ -1,0 +1,138 @@
+skills = '{
+    "programming language": [
+        {
+            "name": "JavaScript",
+            "level": "Advanced",
+            "description": "Proficient in JavaScript, including ES6+ features, asynchronous programming, and DOM manipulation.",
+            "tags": ["JavaScript", "ES6", "DOM"]
+        }
+    ],
+    "programming": [
+        {
+            "name": "Asynchronous Programming",
+            "level": "Advanced",
+            "description": "Experience with Promises, async/await, and callback functions for handling asynchronous operations.",
+            "tags": ["programming", "Asynchronous", "Promises", "async/await"]
+        },
+        {
+            "name": "Functional Programming",
+            "level": "Intermediate",
+            "description": "Understanding of functional programming concepts such as higher-order functions, pure functions, and immutability.",
+            "tags": ["programming", "Functional", "higher-order functions"]
+        },
+        {
+            "name": "Object-Oriented Programming",
+            "level": "Intermediate",
+            "description": "Familiar with OOP principles like encapsulation, inheritance, and polymorphism.",
+            "tags": ["programming", "OOP", "encapsulation"]
+        }
+    ],
+    "web development": [
+        {
+            "name": "HTML",
+            "level": "Advanced",
+            "description": "Proficient in HTML5, including semantic markup and accessibility best practices.",
+            "tags": ["HTML", "HTML5", "accessibility"]
+        },
+        {
+            "name": "CSS",
+            "level": "Advanced",
+            "description": "Skilled in CSS3, including Flexbox, Grid, and responsive design techniques.",
+            "tags": ["CSS", "CSS3", "Flexbox", "Grid"]
+        },
+        {
+            "name": "React",
+            "level": "Intermediate",
+            "description": "Experience with React.js for building user interfaces, including hooks and state management.",
+            "tags": ["React", "React.js", "hooks"]
+        }
+    ],
+    "tools": [
+        {
+            "name": "Git",
+            "level": "Advanced",
+            "description": "Proficient in using Git for version control, including branching and merging strategies.",
+            "tags": ["Git", "version control", "branching"]
+        },
+        {
+            "name": "Webpack",
+            "level": "Intermediate",
+            "description": "Experience with Webpack for module bundling and asset management.",
+            "tags": ["Webpack", "module bundling", "asset management"]
+        },
+        {
+            "name": "VSCode",
+            "level": "Advanced",
+            "description": "Proficient in using Visual Studio Code with extensions for enhanced productivity.",
+            "tags": ["VSCode", "productivity", "extensions"]
+        }
+    ],
+    "databases": [
+        {
+            "name": "MongoDB",
+            "level": "Intermediate",
+            "description": "Experience with MongoDB for NoSQL database management, including CRUD operations.",
+            "tags": ["MongoDB", "NoSQL", "CRUD"]
+        },
+        {
+            "name": "MySQL",
+            "level": "Intermediate",
+            "description": "Familiar with MySQL for relational database management and SQL queries.",
+            "tags": ["MySQL", "relational database", "SQL"]
+        }
+    ],
+    "cloud": [
+        {
+            "name": "AWS",
+            "level": "Intermediate",
+            "description": "Experience with AWS services like S3, EC2, and Lambda for cloud computing.",
+            "tags": ["AWS", "cloud computing", "S3", "EC2"]
+        },
+        {
+            "name": "Firebase",
+            "level": "Intermediate",
+            "description": "Familiar with Firebase for real-time database and authentication services.",
+            "tags": ["Firebase", "real-time database", "authentication"]
+        }
+    ],
+    "soft skills": [
+        {
+            "name": "Communication",
+            "level": "Advanced",
+            "description": "Strong verbal and written communication skills, able to convey technical concepts to non-technical audiences.",
+            "tags": ["communication", "verbal", "written"]
+        },
+        {
+            "name": "Teamwork",
+            "level": "Advanced",
+            "description": "Experience working in collaborative environments, contributing to team success.",
+            "tags": ["teamwork", "collaboration", "success"]
+        },
+        {
+            "name": "Problem Solving",
+            "level": "Advanced",
+            "description": "Strong analytical skills for identifying and resolving complex issues.",
+            "tags": ["problem solving", "analytical", "issues"]
+        },
+        {
+            "name": "Time Management",
+            "level": "Advanced",
+            "description": "Ability to prioritize tasks and manage time effectively to meet deadlines.",
+            "tags": ["time management", "prioritization", "deadlines"]
+        }
+    ],
+    "languages": [
+        {
+            "name": "English",
+            "level": "Fluent",
+            "description": "Fluent in English, both written and spoken.",
+            "tags": ["English", "fluent", "written", "spoken"]
+        },
+        {
+            "name": "Spanish",
+            "level": "Intermediate",
+            "description": "Intermediate proficiency in Spanish, able to hold basic conversations.",
+            "tags": ["Spanish", "intermediate", "conversations"]
+        }
+    ]
+}';
