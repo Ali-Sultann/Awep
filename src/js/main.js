@@ -13,8 +13,12 @@ function createSkillCard(skill) {
 
 async function skillsSectionComplete() {
     try {
+        console.log("Fetching skills data...");
+
+        const skillsUrl =
+            "https://github.com/Ali-Sultann/Awep/blob/main/src/json/skills.json"; // Path to the JSON file
         // fetch the skills data from the JSON file using axios
-        const response = await fetch("../json/skills.json");
+        const response = await axios.get(skillsUrl);
         console.log("Response:", response);
 
         // let skills = response.data; // Assuming the JSON structure has a 'skills' array
