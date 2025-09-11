@@ -9,18 +9,25 @@
   </head>
   <body>
     <main>
-      <h1>Giphy Party</h1>  
+      <h1>Giphy Party</h1>
       <div>
         <!-- Think about placing the form here -->
+        <form id="gifSearchForm">
+
+          <input type="text" name="gifQuery" id="gifQuery"
+            placeholder="Search for GIFs..." />
+          <button type="submit">Search</button>
+          <button id="clearBtn" type="reset">Clear GIFs</button>
+        </form>
 
       </div>
-      <div>
+      <div id="gifContainer">
         <!-- Think about displaying the results here -->
         <!-- Or you can build out your own custom HTML structure -->
 
         ... Your GIFs here ..
       </div>
-     
+
     </main>
     <!-- Axios is already imported here for your convenience -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
