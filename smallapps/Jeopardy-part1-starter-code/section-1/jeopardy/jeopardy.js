@@ -1,9 +1,11 @@
 let categories = [];
 const API_ENDPOINT = "https://rithm-jeopardy.herokuapp.com/api/";
 const NUM_CATEGORIES = 6;
-const NUM_QUESTIONS_PER_CAT = 5;
+const NUM_CLUES_PER_CAT = 5;
 
 const $jeopardy = $("<table>", {id: "jeopardy"}); // Create the jeopardy table
+const $gameTitle = $("<h1>").text("Jeopardy!"); // Create the game title
+$("body").prepend($gameTitle);
 const $startBtn = $("<button>", {id: "start"}).text("Start Game");
 const $body = $("body");
 $body.append($startBtn);
@@ -29,25 +31,24 @@ async function getCategory(catId) {
     let res = await axios.get(`${API_ENDPOINT}category`, {params: {id: catId}});
     let cat = res.data;
 
+    // return clues in the format needed by the app
     let clues = cat.clues.map((c) => ({
         question: c.question,
         answer: c.answer,
         showing: null,
     }));
 
-    return {title: cat.title, clues: _.sampleSize(clues, NUM_QUESTIONS_PER_CAT)};
+    return {title: cat.title, clues: _.sampleSize(clues, NUM_CLUES_PER_CAT)};
 }
 
 /** Fill the HTML table#jeopardy with the categories & cells for questions.
  *
  * - The <thead> should be filled w/a <tr>, and a <td> for each category
- * - The <tbody> should be filled w/NUM_QUESTIONS_PER_CAT <tr>s,
+ * - The <tbody> should be filled w/NUM_CLUES_PER_CAT <tr>s,
  *   each with a question for each category in a <td>
  *   (initally, just show a "?" where the question/answer would go.)
  */
-
 async function fillTable() {
-    $jeopardy.empty();
     // Create the header row
     const $thead = $("<thead>"); // table header section: contains header row <tr> with <th> cells
     const $headerRow = $("<tr>");
@@ -66,7 +67,7 @@ async function fillTable() {
 
     // Create the body of the table
     const $tbody = $("<tbody>"); // table body section: contains data rows <tr> with <td> cells
-    for (rowIdx = 0; rowIdx < NUM_QUESTIONS_PER_CAT; rowIdx++) {
+    for (rowIdx = 0; rowIdx < NUM_CLUES_PER_CAT; rowIdx++) {
         const $row = $("<tr>");
         for (let catIdx = 0; catIdx < NUM_CATEGORIES; catIdx++) {
             const $td = $("<td>").attr("id", `${catIdx}-${rowIdx}`).text("?");
@@ -122,7 +123,6 @@ function showLoadingView() {
 }
 
 /** Remove the loading spinner and update the button used to fetch data. */
-
 function hideLoadingView() {
     $(".loader").remove();
     $startBtn.text("Restart Game");
@@ -143,11 +143,7 @@ async function setupAndStart() {
 }
 
 /** On click of start / restart button, set up game. */
-
 $startBtn.on("click", setupAndStart);
-// TODO
 
 /** On page load, add event handler for clicking clues */
-
-// TODO
 $jeopardy.on("click", "td", handleClick);

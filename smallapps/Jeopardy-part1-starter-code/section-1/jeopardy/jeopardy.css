@@ -13,6 +13,16 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+h1 {
+    position: fixed;
+    color: white;
+    text-shadow: 2px -2px 4px #000000;
+    z-index: 10000;
+    top: 0;
+    left: 20px;
+}
+
 /* Table layout */
 
 #start {
