@@ -3,8 +3,9 @@ const API_ENDPOINT = "https://rithm-jeopardy.herokuapp.com/api/";
 const NUM_CATEGORIES = 6;
 const NUM_CLUES_PER_CAT = 5;
 
-const $jeopardy = $("<table>", {id: "jeopardy"}); // Create the jeopardy table
-const $gameTitle = $("<h1>").text("Jeopardy!"); // Create the game title
+// Create the HTML table Jeopardy, the game title and start Button for the game
+const $jeopardy = $("<table>", {id: "jeopardy"});
+const $gameTitle = $("<h1>").text("Jeopardy!");
 $("body").prepend($gameTitle);
 const $startBtn = $("<button>", {id: "start"}).text("Start Game");
 const $body = $("body");
@@ -52,12 +53,8 @@ async function fillTable() {
     // Create the header row
     const $thead = $("<thead>"); // table header section: contains header row <tr> with <th> cells
     const $headerRow = $("<tr>");
-    try {
-        // .map(...) runs only after getRandomCategoryIds() resolves, then run all requests in parallel, not waiting for one then the other
-        categories = await Promise.all((await getRandomCategoryIds()).map((id) => getCategory(id)));
-    } catch (e) {
-        console.error("Error fetching some categories", e);
-    }
+
+    // for all categories, add a header cell to the header row
     for (let category of categories) {
         const $th = $("<th>").text(category.title); // table header cell
         $headerRow.append($th);
@@ -67,18 +64,24 @@ async function fillTable() {
 
     // Create the body of the table
     const $tbody = $("<tbody>"); // table body section: contains data rows <tr> with <td> cells
+    // Create the rows for the clues
     for (rowIdx = 0; rowIdx < NUM_CLUES_PER_CAT; rowIdx++) {
+        // for each row
         const $row = $("<tr>");
+        // for each category, add a cell for the clue
         for (let catIdx = 0; catIdx < NUM_CATEGORIES; catIdx++) {
+            // id will allow us to identify the cell and the corresponding clue
+            // e.g. "0-0" is the first category, first clue; "4-2" is the fifth category, third clue
             const $td = $("<td>").attr("id", `${catIdx}-${rowIdx}`).text("?");
             $row.append($td);
         }
         $tbody.append($row);
     }
+    // As we have built the table. Now we can hide the loading view and show the table:
     hideLoadingView();
     $jeopardy.append($tbody);
+    // Compared to remove the table I just use css to hide/show the table
     $jeopardy.addClass("show");
-    // Add the table to the body
 }
 
 /** Handle clicking on a clue: show the question or answer.
@@ -90,12 +93,14 @@ async function fillTable() {
  * */
 
 function handleClick(evt) {
-    console.log("I was called, evt is:", evt.target);
-
     let id = evt.target.id;
     let [catIdx, clueIdx] = id.split("-"); // get category and clue indices from cell id
     let clue = categories[catIdx].clues[clueIdx];
 
+    // handle based on current state of clue: clue.showing
+    // null -> show question & add class "question" to cell
+    // question -> show answer & change class to "answer"
+    // answer -> ignore
     switch (clue.showing) {
         case null:
             $(`#${id}`).text(clue.question).addClass("question");
@@ -115,7 +120,9 @@ function handleClick(evt) {
  */
 
 function showLoadingView() {
+    $(`.loader`).remove(); // in case there is already a loader, remove it first
     $startBtn.text("Loading...");
+    // choose to hide the table instead of removing it and re-adding it
     $jeopardy.empty();
     $jeopardy.removeClass("show");
     $loader = $("<div>", {class: "loader"});
@@ -139,6 +146,12 @@ async function setupAndStart() {
     $startBtn.text("Restart Game");
     // Start game button
     showLoadingView();
+    try {
+        // .map(...) runs only after getRandomCategoryIds() resolves, then run all requests in parallel, not waiting for one then the other
+        categories = await Promise.all((await getRandomCategoryIds()).map((id) => getCategory(id)));
+    } catch (e) {
+        console.error("Error fetching some categories", e);
+    }
     await fillTable();
 }
 

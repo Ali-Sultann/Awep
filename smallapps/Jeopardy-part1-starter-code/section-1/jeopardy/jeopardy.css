@@ -6,62 +6,65 @@
   #74119c
 */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #115ff4;
-    margin: 0;
-    height: 100vh;
+    background-color: #161748; /* light blue background */
     display: flex;
     flex-direction: column;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
 }
 
 h1 {
-    position: fixed;
-    color: white;
-    text-shadow: 2px -2px 4px #000000;
-    z-index: 10000;
-    top: 0;
+    color: #9bc400;
+    font-size: 40px;
     left: 20px;
+    position: fixed;
+    text-shadow: 2px -2px 4px #000000;
+    top: 0;
+    z-index: 10000;
 }
 
 /* Table layout */
 
 #start {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 24px;
-    background-color: #74119c;
-    color: white;
+    background-color: black;
     border: none;
     border-radius: 10px;
+    box-shadow: 0 -1px 2px white;
+    color: gold;
     cursor: pointer;
-    box-shadow: 0 4px #8d2ab5;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-shadow: white 0px -1px 1px;
 }
 
 .loader {
-    position: relative;
-    margin: auto;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    display: inline-block;
-    border-top: 20px solid #fff;
-    border-right: 20px solid transparent;
-    box-sizing: border-box;
     animation: rotation 1s linear infinite;
+    border-radius: 50%;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 300px;
+    margin: auto;
+    position: relative;
+    width: 300px;
 }
 .loader::after {
-    content: "";
+    animation: rotation 0.5s linear infinite reverse;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #ff3d00;
+    border-radius: 50%;
     box-sizing: border-box;
-    position: absolute;
+    content: "";
+    height: 300px;
     left: 0;
+    position: absolute;
     top: 0;
     width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border-left: 20px solid #ff3d00;
-    border-bottom: 20px solid transparent;
-    animation: rotation 0.5s linear infinite reverse;
 }
 @keyframes rotation {
     0% {
@@ -73,49 +76,49 @@ h1 {
 }
 
 #jeopardy.show {
+    background-color: #9bc400;
     border-collapse: collapse;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin: auto;
-    text-align: center;
-    width: 1100px;
-    height: 80%;
-    table-layout: fixed;
     font-family: "Trebuchet MS", sans-serif;
     font-size: 18px;
-    background-color: #060ce9;
-    border-radius: 15px;
-    /* margin-top: 20px; */
+    height: 80%;
+    margin: auto;
+    table-layout: fixed;
+    text-align: center;
+    width: 1100px;
 }
 
 #jeopardy th,
 #jeopardy td {
-    border: 2px solid black;
-    text-align: center;
+    background-color: #060ce9;
+    border: 1px solid black;
     font-weight: bold;
     padding: 3px;
+    text-align: center;
 }
 #jeopardy td {
-    height: 95px;
     font-size: 0.9em;
+    height: 95px;
 }
 #jeopardy th {
-    background-color: #060ce9;
     color: gold;
     font-size: 24px;
     height: 70px;
+    text-transform: uppercase;
 }
 
 #jeopardy td:hover {
-    border-radius: 10px;
     background-color: black;
+    border-radius: 10px;
+    color: gold;
     cursor: pointer;
     font-weight: bold;
-    color: gold;
     transform: scale(1.6);
 }
 
 #jeopardy td.answer {
-    background-color: #28a200;
+    background-color: #9bc400;
     color: black;
     font-size: 20px;
 }
