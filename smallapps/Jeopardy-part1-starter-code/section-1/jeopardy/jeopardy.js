@@ -1,22 +1,3 @@
-// categories is the main data structure for the app; it looks like this:
-
-//  [
-//    { title: "Math",
-//      clues: [
-//        {question: "2+2", answer: 4, showing: null},
-//        {question: "1+1", answer: 2, showing: null}
-//        ...
-//      ],
-//    },
-//    { title: "Literature",
-//      clues: [
-//        {question: "Hamlet Author", answer: "Shakespeare", showing: null},
-//        {question: "Bell Jar Author", answer: "Plath", showing: null},
-//        ...
-//      ],
-//    },
-//    ...
-//  ]
 let categories = [];
 const API_ENDPOINT = "https://rithm-jeopardy.herokuapp.com/api/";
 const NUM_CATEGORIES = 6;
@@ -28,7 +9,6 @@ const $body = $("body");
 $body.append($startBtn);
 $body.append($jeopardy);
 /** Get NUM_CATEGORIES random category from API.
- *
  * Returns array of category ids
  */
 async function getRandomCategoryIds() {
@@ -38,13 +18,10 @@ async function getRandomCategoryIds() {
     return _.sampleSize(catIds, NUM_CATEGORIES);
 }
 /** Return object with data about a category:
- *
  *  Returns { title: "Math", clues: clue-array }
- *
  * Where clue-array is:
  *   [
  *      {question: "Hamlet Author", answer: "Shakespeare", showing: null},
- *      {question: "Bell Jar Author", answer: "Plath", showing: null},
  *      ...
  *   ]
  */
@@ -97,7 +74,9 @@ async function fillTable() {
         }
         $tbody.append($row);
     }
+    hideLoadingView();
     $jeopardy.append($tbody);
+    $jeopardy.addClass("show");
     // Add the table to the body
 }
 
@@ -135,12 +114,19 @@ function handleClick(evt) {
  */
 
 function showLoadingView() {
+    $startBtn.text("Loading...");
     $jeopardy.empty();
+    $jeopardy.removeClass("show");
+    $loader = $("<div>", {class: "loader"});
+    $body.append($loader);
 }
 
 /** Remove the loading spinner and update the button used to fetch data. */
 
-function hideLoadingView() {}
+function hideLoadingView() {
+    $(".loader").remove();
+    $startBtn.text("Restart Game");
+}
 
 /** Start game:
  *
@@ -154,15 +140,14 @@ async function setupAndStart() {
     // Start game button
     showLoadingView();
     await fillTable();
-    hideLoadingView();
 }
 
 /** On click of start / restart button, set up game. */
-$startBtn.on("click", setupAndStart);
-$jeopardy.on("click", "td", handleClick);
 
+$startBtn.on("click", setupAndStart);
 // TODO
 
 /** On page load, add event handler for clicking clues */
 
 // TODO
+$jeopardy.on("click", "td", handleClick);
