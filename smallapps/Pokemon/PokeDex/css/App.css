@@ -6,14 +6,26 @@ h1 {
     color: gold;
     text-shadow: 1px -1px 1px white;
 }
-#pokeCardContainer {
-    width: 80%;
-    gap: 60px;
+#gameBoard{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap:40px;
+    justify-content: center;
+}
+.dexBoard {
     text-align: center;
+    width: 700px;
+}
+.pokeCardContainer {
+    padding: 10px;
+    background-color: #9bc400;
+    gap: 20px;
     display: grid;
     justify-content: center;
+    align-items: center;
     margin: 0 auto; /* center the whole dex */
-    grid-template-columns: repeat(4, 200px);
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(2, 250px);
 }
 
 .pokemonCard {
@@ -28,4 +40,12 @@ h1 {
 .pokemonCard h2 {
     color: black;
     text-shadow: 0px -1px 1px black;
+}
+
+.dexBoard .winnerMessage{
+    background-color: gold;
+    text-align: center;
+    margin: 0px auto;
+    font-weight: bold;
+    font-size: 30px;
 }

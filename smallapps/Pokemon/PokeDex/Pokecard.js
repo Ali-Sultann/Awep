@@ -1,6 +1,6 @@
 function Pokecard({pokemon}) {
     return (
-        <div class="pokemonCard">
+        <div className="pokemonCard">
             <h2>{pokemon.name}</h2>
             <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}

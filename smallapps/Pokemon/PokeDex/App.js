@@ -12,7 +12,7 @@ function App() {
     return (
         <>
             <h1>PokeDex</h1>
-            <Pokedex pokemonList={pokemonList} />
+            <Pokegame pokemonList={pokemonList} />
         </>
     );
 }

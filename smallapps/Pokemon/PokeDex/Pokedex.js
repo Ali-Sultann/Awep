@@ -1,9 +1,16 @@
-function Pokedex({pokemonList}) {
+function Pokedex({pokemonList, isWinner}) {
     return (
-        <section id="pokeCardContainer">
+    <div className="dexBoard">
+        <div className="pokeCardContainer">
             {pokemonList.map((pokemon) => (
                 <Pokecard pokemon={pokemon} />
             ))}
-        </section>
+        </div>
+        {
+            isWinner &&
+            <p className="winnerMessage">
+                “THIS HAND WINS!”</p>
+        }
+        </div>
     );
 }
